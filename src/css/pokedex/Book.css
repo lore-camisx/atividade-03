@@ -1,0 +1,287 @@
+.book-wrap {
+  position: relative;
+  max-width: 1120px;
+  margin: 64px auto 0;
+  padding-right: 64px;
+}
+
+/* ===== Capa ===== */
+.book {
+  position: relative;
+  padding: 14px 14px 18px;
+  background: var(--vermillion);
+  box-shadow:
+    0 -4px 0 0 var(--ink),
+    0 4px 0 0 var(--ink),
+    -4px 0 0 0 var(--ink),
+    4px 0 0 0 var(--ink),
+    inset 0 -6px 0 0 var(--vermillion-dark),
+    inset 0 4px 0 0 #ec6a52,
+    12px 14px 0 0 rgba(13, 55, 104, 0.45);
+}
+
+.book__corner {
+  position: absolute;
+  z-index: 2;
+  width: 18px;
+  height: 18px;
+  background: var(--saffron);
+  box-shadow: inset -4px -4px 0 0 var(--saffron-dark), 0 0 0 3px var(--ink);
+}
+
+.book__corner--tl {
+  top: -4px;
+  left: -4px;
+}
+
+.book__corner--tr {
+  top: -4px;
+  right: -4px;
+}
+
+.book__corner--bl {
+  bottom: -4px;
+  left: -4px;
+}
+
+.book__corner--br {
+  bottom: -4px;
+  right: -4px;
+}
+
+.book__clasp {
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 28px;
+  height: 14px;
+  transform: translateX(-50%);
+  background: var(--saffron);
+  box-shadow: inset 0 -4px 0 0 var(--saffron-dark), 0 0 0 3px var(--ink);
+}
+
+/* ===== Páginas ===== */
+.book__spread {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Lombada no centro */
+.book__spread::before {
+  content: '';
+  position: absolute;
+  top: -14px;
+  bottom: -18px;
+  left: 50%;
+  width: 10px;
+  transform: translateX(-50%);
+  background: var(--vermillion-dark);
+  box-shadow: inset 3px 0 0 0 var(--ink), inset -3px 0 0 0 var(--ink);
+}
+
+.book__page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  min-height: 640px;
+  padding: 22px 20px;
+  background: var(--paper);
+  box-shadow:
+    0 -3px 0 0 var(--ink),
+    0 3px 0 0 var(--ink),
+    -3px 0 0 0 var(--ink),
+    3px 0 0 0 var(--ink),
+    inset 0 -5px 0 0 var(--paper-3);
+}
+
+/* Sombra em degraus perto da lombada */
+.book__page--left {
+  background:
+    linear-gradient(to left, rgba(42, 29, 36, 0.12) 0 6px, rgba(42, 29, 36, 0.06) 6px 14px, transparent 14px),
+    var(--paper);
+}
+
+.book__page--right {
+  background:
+    linear-gradient(to right, rgba(42, 29, 36, 0.12) 0 6px, rgba(42, 29, 36, 0.06) 6px 14px, transparent 14px),
+    var(--paper);
+}
+
+/* Rebites nos cantos internos da página */
+.book__page::before,
+.book__page::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  background: var(--paper-3);
+  box-shadow: 0 0 0 1px var(--pewter-dark);
+}
+
+.book__page::before {
+  left: 8px;
+}
+
+.book__page::after {
+  right: 8px;
+}
+
+/* ===== Abas superiores ===== */
+.book__tabs {
+  position: absolute;
+  top: -54px;
+  left: 36px;
+  z-index: 1;
+  display: flex;
+  gap: 6px;
+}
+
+.book__tab {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 52px;
+  padding-bottom: 6px;
+  margin-top: 8px;
+  background: var(--tab-bg);
+  color: var(--text);
+  box-shadow:
+    0 -3px 0 0 var(--ink),
+    -3px 0 0 0 var(--ink),
+    3px 0 0 0 var(--ink),
+    inset 0 4px 0 0 rgba(255, 255, 255, 0.5);
+  transition: transform 0.1s steps(2);
+}
+
+.book__tab:hover {
+  transform: translateY(-3px);
+}
+
+.book__tab.is-active {
+  height: 60px;
+  margin-top: 0;
+  background: var(--saffron);
+  color: var(--ink);
+}
+
+.book__tab-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+/* ===== Fitas marcadoras ===== */
+.book__ribbons {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ribbon {
+  padding: 0;
+  border: 0;
+  background: none;
+  filter: drop-shadow(3px 0 0 var(--ink)) drop-shadow(-3px 0 0 var(--ink)) drop-shadow(0 3px 0 var(--ink)) drop-shadow(0 -3px 0 var(--ink));
+  transition: transform 0.12s steps(2);
+}
+
+.ribbon:hover:not(:disabled),
+.ribbon[aria-pressed='true'] {
+  transform: translateX(6px);
+}
+
+.ribbon:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.ribbon__body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 64px;
+  height: 42px;
+  padding-left: 12px;
+  background: var(--ribbon);
+  color: var(--ink);
+  clip-path: polygon(0 0, 100% 0, 80% 50%, 100% 100%, 0 100%);
+  box-shadow: inset 0 -5px 0 0 rgba(0, 0, 0, 0.18), inset 0 4px 0 0 rgba(255, 255, 255, 0.3);
+}
+
+.ribbon__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+/* ===== Responsivo: páginas empilhadas ===== */
+@media (max-width: 900px) {
+  .book-wrap {
+    margin-top: 16px;
+    padding-right: 0;
+  }
+
+  .book__tabs {
+    position: static;
+    margin-bottom: -3px;
+    padding-left: 12px;
+  }
+
+  .book__tab {
+    width: 52px;
+  }
+
+  .book__ribbons {
+    position: static;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 12px;
+  }
+
+  .ribbon:hover:not(:disabled),
+  .ribbon[aria-pressed='true'] {
+    transform: translateY(-4px);
+  }
+
+  .book__spread {
+    grid-template-columns: 1fr;
+  }
+
+  .book__spread::before {
+    display: none;
+  }
+
+  .book__page {
+    min-height: 0;
+    padding: 20px 14px;
+  }
+
+  .book__page--right {
+    scroll-margin-top: 12px;
+  }
+}
+
+/* Capa um pouco mais escura e sombra mais funda à noite */
+:root[data-theme='dark'] .book {
+  background: #b42f19;
+  box-shadow:
+    0 -4px 0 0 var(--ink),
+    0 4px 0 0 var(--ink),
+    -4px 0 0 0 var(--ink),
+    4px 0 0 0 var(--ink),
+    inset 0 -6px 0 0 #7a1f0f,
+    inset 0 4px 0 0 #d9503a,
+    12px 14px 0 0 rgba(0, 0, 0, 0.45);
+}

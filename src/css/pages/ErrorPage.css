@@ -1,0 +1,210 @@
+.error-screen {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 20px;
+  min-height: 100vh;
+  padding: 24px 16px;
+  background:
+    radial-gradient(var(--pewter) 1.5px, transparent 1.5px) 0 0 / 16px 16px,
+    var(--surface-page);
+}
+
+.error-screen__window {
+  animation: window-pop 0.35s steps(5);
+}
+
+@keyframes window-pop {
+  from {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* A janela "treme" de leve de tempos em tempos */
+.retro-window--vermillion.error-screen__window {
+  animation:
+    window-pop 0.35s steps(5),
+    shake 3s steps(1) 0.4s infinite;
+}
+
+@keyframes shake {
+  0%,
+  90%,
+  100% {
+    transform: translate(0, 0);
+  }
+  92% {
+    transform: translate(-4px, 2px);
+  }
+  94% {
+    transform: translate(4px, -2px);
+  }
+  96% {
+    transform: translate(-2px, 0);
+  }
+}
+
+.error-screen__title {
+  margin: 12px 0 6px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.error-screen__message {
+  margin: 0 0 4px;
+  font-size: 19px;
+}
+
+.error-screen__detail {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  word-break: break-word;
+}
+
+.error-screen__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.error-screen__ok {
+  min-width: 160px;
+}
+
+.error-screen__copy {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* ===== Animações ===== */
+.err-art {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  margin: 0 auto;
+}
+
+.err-art--confused img {
+  width: 144px;
+  height: 144px;
+  animation: head-shake 1.2s steps(1) infinite;
+}
+
+@keyframes head-shake {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(0);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+}
+
+.err-art__q {
+  position: absolute;
+  top: 10px;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--cerulean-dark);
+  opacity: 0;
+  animation: float-q 2.4s steps(8) infinite;
+}
+
+.err-art__q--1 {
+  left: 6px;
+}
+
+.err-art__q--2 {
+  left: 60px;
+  animation-delay: 0.8s;
+}
+
+.err-art__q--3 {
+  right: 6px;
+  animation-delay: 1.6s;
+}
+
+@keyframes float-q {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+}
+
+.err-art--glitch {
+  animation: glitch-shift 1.6s steps(1) infinite;
+}
+
+.err-art__block {
+  animation: blink 0.6s steps(2) infinite;
+}
+
+@keyframes glitch-shift {
+  0%,
+  100% {
+    transform: translateX(0);
+    clip-path: inset(0 0 0 0);
+  }
+  20% {
+    transform: translateX(-6px);
+    clip-path: inset(20% 0 50% 0);
+  }
+  24% {
+    transform: translateX(4px);
+    clip-path: inset(0 0 0 0);
+  }
+  60% {
+    transform: translateX(3px);
+    clip-path: inset(60% 0 10% 0);
+  }
+  64% {
+    transform: translateX(0);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.err-art--lost .pixel-art {
+  animation: look-around 2s steps(1) infinite;
+}
+
+@keyframes look-around {
+  50% {
+    transform: scaleX(-1);
+  }
+}
+
+.err-art__dots {
+  position: absolute;
+  top: -18px;
+  right: -26px;
+  padding: 0 8px;
+  background: var(--surface);
+  font-size: 22px;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px var(--ink);
+  animation: blink 1.2s steps(2) infinite;
+}
+
+:root[data-theme='dark'] .error-screen {
+  background:
+    radial-gradient(#2f2d4f 1.5px, transparent 1.5px) 0 0 / 16px 16px,
+    var(--surface-page);
+}

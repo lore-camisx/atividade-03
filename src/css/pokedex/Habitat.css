@@ -1,0 +1,416 @@
+.habitat {
+  display: grid;
+  gap: 12px;
+}
+
+/* Palco: papel liso como a tela de um editor de pixel art */
+.habitat__stage {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(rgba(42, 29, 36, 0.08) 1px, transparent 1px) 0 0 / 12px 12px,
+    var(--sky);
+  box-shadow: 0 0 0 3px var(--ink), inset 0 -6px 0 0 rgba(0, 0, 0, 0.05);
+}
+
+.habitat__stage[data-night] {
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px) 0 0 / 12px 12px,
+    var(--sky);
+}
+
+.habitat__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  outline: none;
+  touch-action: manipulation;
+}
+
+.habitat__svg:focus-visible {
+  outline: 3px dashed var(--saffron);
+  outline-offset: -6px;
+}
+
+.habitat__label {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 2px 10px;
+  background: var(--surface);
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px var(--ink);
+  pointer-events: none;
+}
+
+/* ===== Pokémon ===== */
+.habitat-mon {
+  cursor: pointer;
+  outline: none;
+}
+
+.habitat-mon:hover image,
+.habitat-mon:focus-visible image {
+  filter: drop-shadow(1px 0 0 #fffaf0) drop-shadow(-1px 0 0 #fffaf0) drop-shadow(0 1px 0 #fffaf0) drop-shadow(0 -1px 0 #fffaf0);
+}
+
+.habitat-mon__hop {
+  animation: mon-hop 0.45s steps(4);
+}
+
+@keyframes mon-hop {
+  40% {
+    transform: translateY(-8px);
+  }
+}
+
+.habitat-mon image {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: mon-idle 1s steps(1) infinite;
+}
+
+.habitat-mon.is-walking image {
+  animation-duration: 0.3s;
+}
+
+.habitat-mon.is-sleeping image {
+  animation: mon-sleep 2.4s steps(2) infinite;
+  filter: brightness(0.85);
+}
+
+@keyframes mon-idle {
+  50% {
+    transform: translateY(-1px);
+  }
+}
+
+@keyframes mon-sleep {
+  50% {
+    transform: translateY(1px) scaleY(0.97);
+  }
+}
+
+.habitat-item {
+  transition: transform 0.5s steps(5);
+}
+
+.habitat-item--ball {
+  animation: ball-bounce 0.8s steps(2) infinite;
+}
+
+@keyframes ball-bounce {
+  50% {
+    translate: 0 -1px;
+  }
+}
+
+/* ===== Cenário animado ===== */
+.terrain-shine {
+  animation: blink 1.6s steps(2) infinite;
+}
+
+.decor-float {
+  animation: decor-float 2s steps(2) infinite;
+}
+
+@keyframes decor-float {
+  50% {
+    transform: translateY(-1px);
+  }
+}
+
+.decor-glow {
+  animation: decor-glow 1.8s steps(2) infinite;
+}
+
+@keyframes decor-glow {
+  50% {
+    filter: brightness(1.25);
+  }
+}
+
+.decor-blink {
+  animation: blink 0.8s steps(2) infinite;
+}
+
+.tile-highlight {
+  pointer-events: none;
+}
+
+/* Clima */
+.weather {
+  pointer-events: none;
+}
+
+.wx-fall {
+  animation: wx-fall 6s linear infinite;
+}
+
+.wx-sway {
+  animation: wx-sway 7s steps(28) infinite;
+}
+
+.wx-rise {
+  animation: wx-rise 5s steps(20) infinite;
+}
+
+.wx-blink {
+  animation: wx-blink 2s steps(1) infinite;
+}
+
+.wx-drift {
+  animation: wx-drift 6s linear infinite;
+}
+
+.wx-float {
+  animation: wx-float 5s steps(10) infinite;
+}
+
+@keyframes wx-fall {
+  from {
+    transform: translateY(-200px);
+  }
+  to {
+    transform: translateY(40px);
+  }
+}
+
+@keyframes wx-sway {
+  0% {
+    transform: translate(0, -200px);
+  }
+  25% {
+    transform: translate(6px, -130px);
+  }
+  50% {
+    transform: translate(-4px, -70px);
+  }
+  75% {
+    transform: translate(5px, -10px);
+  }
+  100% {
+    transform: translate(0, 40px);
+  }
+}
+
+@keyframes wx-rise {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+}
+
+@keyframes wx-blink {
+  0%,
+  60% {
+    opacity: 0;
+  }
+  70%,
+  90% {
+    opacity: 1;
+  }
+}
+
+@keyframes wx-drift {
+  from {
+    transform: translateX(-260px);
+  }
+  to {
+    transform: translateX(60px);
+  }
+}
+
+@keyframes wx-float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translate(6px, -10px);
+    opacity: 1;
+  }
+}
+
+/* ===== Balão de fala e corações ===== */
+.habitat__bubble {
+  position: absolute;
+  z-index: 2;
+  padding: 3px 10px;
+  transform: translate(-50%, -100%);
+  background: var(--surface);
+  font-size: 17px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 0 0 3px var(--ink);
+  pointer-events: none;
+  animation: bubble-pop 0.2s steps(3);
+}
+
+.habitat__bubble::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -9px;
+  width: 8px;
+  height: 6px;
+  transform: translateX(-50%);
+  background: var(--ink);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+@keyframes bubble-pop {
+  from {
+    transform: translate(-50%, -60%) scale(0.5);
+  }
+}
+
+.habitat__heart {
+  position: absolute;
+  z-index: 2;
+  color: var(--vermillion);
+  transform: translate(-50%, 0);
+  pointer-events: none;
+  animation: heart-up 1.1s steps(8) forwards;
+}
+
+@keyframes heart-up {
+  to {
+    transform: translate(-50%, -44px);
+    opacity: 0;
+  }
+}
+
+/* ===== Painel de interação ===== */
+.habitat__hud {
+  display: grid;
+  gap: 10px;
+}
+
+.habitat__mood {
+  display: grid;
+  gap: 6px;
+}
+
+.habitat__mood-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.habitat__mood-title .pixel-icon {
+  color: var(--vermillion);
+}
+
+.habitat__mood-track {
+  height: 14px;
+  background: var(--paper-3);
+  box-shadow: 0 0 0 3px var(--ink);
+}
+
+.habitat__mood-track span {
+  display: block;
+  height: 100%;
+  background: repeating-linear-gradient(90deg, var(--vermillion) 0 8px, #ec6a52 8px 10px);
+  transition: width 0.4s steps(4);
+}
+
+.habitat__tray {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+}
+
+.habitat__item-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px 4px 6px;
+  margin: 3px;
+  border: 0;
+  background: var(--surface);
+  font-weight: 700;
+  box-shadow: 0 0 0 3px var(--ink), inset 0 -3px 0 0 rgba(0, 0, 0, 0.12);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.habitat__item-btn:active {
+  cursor: grabbing;
+}
+
+.habitat__tips {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.habitat__ghost {
+  position: fixed;
+  z-index: 300;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  filter: drop-shadow(3px 3px 0 rgba(0, 0, 0, 0.3));
+}
+
+/* Cabeçalho da aba */
+.habitat-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.habitat-head .logo {
+  display: grid;
+  font-size: clamp(24px, 3vw, 32px);
+}
+
+.habitat-head__types {
+  display: flex;
+  gap: 4px;
+}
+
+/* ===== Noite no diorama ===== */
+:root[data-theme='dark'] .habitat__stage {
+  background:
+    radial-gradient(rgba(255, 250, 240, 0.5) 1px, transparent 1.5px) 7px 5px / 37px 29px,
+    radial-gradient(rgba(255, 250, 240, 0.25) 1px, transparent 1.5px) 0 0 / 23px 17px,
+    #16183a;
+}
+
+.habitat-night {
+  pointer-events: none;
+}
+
+.habitat-firefly {
+  animation: map-firefly 2.6s steps(6) infinite;
+}
+
+@keyframes map-firefly {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  40% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+    transform: translate(2px, -3px);
+  }
+}

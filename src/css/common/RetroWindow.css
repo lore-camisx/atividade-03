@@ -1,0 +1,88 @@
+.retro-window {
+  --win-bg: #fbe08a;
+  --win-bar: #f3d9bd;
+  width: min(520px, 100%);
+  background: var(--win-bar);
+  /* A janela continua clara à noite, como uma tela antiga acesa */
+  --text: #2a1d24;
+  --muted: #6e6253;
+  --surface: #fffaf0;
+  --paper-3: #ddd1b4;
+  color: var(--text);
+  border: 3px solid var(--ink);
+  box-shadow: 10px 10px 0 0 rgba(42, 29, 36, 0.35);
+}
+
+.retro-window--saffron {
+  --win-bg: #fbe27a;
+}
+
+.retro-window--cerulean {
+  --win-bg: #bfe9fb;
+}
+
+.retro-window--pewter {
+  --win-bg: var(--pewter-light);
+}
+
+.retro-window--vermillion {
+  --win-bg: #f7c2b5;
+}
+
+.retro-window__bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-bottom: 3px solid var(--ink);
+}
+
+.retro-window__box {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 3px solid var(--ink);
+  background: var(--win-bar);
+}
+
+.retro-window__box--min {
+  background: linear-gradient(transparent 55%, var(--ink) 55% 75%, transparent 75%) var(--win-bar);
+}
+
+.retro-window__box--close {
+  background:
+    linear-gradient(45deg, transparent 42%, var(--ink) 42% 58%, transparent 58%),
+    linear-gradient(-45deg, transparent 42%, var(--ink) 42% 58%, transparent 58%),
+    var(--win-bar);
+}
+
+.retro-window__stripes {
+  flex: 1;
+  min-width: 12px;
+  height: 14px;
+  background: repeating-linear-gradient(to bottom, var(--vermillion) 0 2px, transparent 2px 4px);
+  opacity: 0.75;
+}
+
+.retro-window__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.retro-window__body {
+  margin: 0 8px 8px;
+  padding: 24px 20px;
+  background: var(--win-bg);
+  border: 3px solid var(--ink);
+  border-top: 0;
+  text-align: center;
+}
+
+@media (max-width: 420px) {
+  .retro-window__title {
+    font-size: 15px;
+  }
+}

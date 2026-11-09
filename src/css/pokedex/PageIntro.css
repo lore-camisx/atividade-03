@@ -1,0 +1,82 @@
+.page-intro {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 8px;
+  flex: 1;
+  padding: 24px;
+  text-align: center;
+}
+
+/* Seta pixelada piscando para a página esquerda */
+.page-intro__arrow {
+  width: 48px;
+  height: 40px;
+  background: var(--vermillion);
+  clip-path: polygon(0 50%, 40% 0, 40% 30%, 100% 30%, 100% 70%, 40% 70%, 40% 100%);
+  animation: point 0.8s steps(1) infinite;
+}
+
+@keyframes point {
+  50% {
+    transform: translateX(-8px);
+  }
+}
+
+.page-intro__title {
+  margin: 8px 0 0;
+  font-family: var(--font-logo);
+  font-size: 30px;
+  font-weight: normal;
+  color: var(--cerulean-dark);
+  letter-spacing: 1px;
+}
+
+.page-intro__text {
+  max-width: 380px;
+}
+
+.page-intro__text ul {
+  display: grid;
+  gap: 4px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  list-style: none;
+  background: var(--paper-2);
+  box-shadow: 0 0 0 3px var(--paper-3);
+}
+
+.page-intro__tip {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.compare-picks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.compare-picks__slot {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 4px;
+  min-height: 140px;
+  font-weight: 600;
+}
+
+.compare-picks__letter {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  color: var(--vermillion);
+  font-weight: 700;
+}
+
+.compare-picks__q {
+  font-family: var(--font-logo);
+  font-size: 48px;
+  color: var(--pewter-dark);
+}

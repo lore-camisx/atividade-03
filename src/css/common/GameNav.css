@@ -1,0 +1,33 @@
+.game-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.game-nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  margin: 3px;
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow:
+    0 -3px 0 0 var(--ink),
+    0 3px 0 0 var(--ink),
+    -3px 0 0 0 var(--ink),
+    3px 0 0 0 var(--ink),
+    inset 0 -3px 0 0 rgba(0, 0, 0, 0.15);
+  transition: transform 0.1s steps(2);
+}
+
+.game-nav__link:hover {
+  transform: translateY(-2px);
+}
+
+.game-nav__link.active {
+  background: var(--saffron);
+  color: var(--ink);
+}

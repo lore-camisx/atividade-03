@@ -1,0 +1,228 @@
+/* ===== Fontes ===== */
+@font-face {
+  font-family: 'Pokemon Solid';
+  src: url('./assets/fonts/PokemonSolid.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pokemon Hollow';
+  src: url('./assets/fonts/PokemonHollow.ttf') format('truetype');
+  font-display: swap;
+}
+
+/* ===== Paleta (Viridian, Pewter, Cerulian, Vermillion, Saffron) ===== */
+:root {
+  --viridian: #009698;
+  --viridian-dark: #006a6c;
+  --viridian-deep: #0b3d40;
+  --pewter: #ccc7b9;
+  --pewter-light: #e9e5da;
+  --pewter-dark: #9b9584;
+  --cerulean: #00aaee;
+  --cerulean-dark: #0a6fb0;
+  --cerulean-deep: #0d3768;
+  --vermillion: #d9381e;
+  --vermillion-dark: #9c2512;
+  --saffron: #f4c430;
+  --saffron-light: #fbe08a;
+  --saffron-dark: #c48f10;
+
+  --ink: #2a1d24;
+  --paper: #f7f1e3;
+  --paper-2: #ece3cd;
+  --paper-3: #ddd1b4;
+  --muted: #6e6253;
+  --white: #fffaf0;
+  --text: #2a1d24;
+  --surface: #fffaf0;
+  --surface-page: #fffaf0;
+  --tab-bg: #f3d9bd;
+
+  --px: 4px;
+  --font-logo: 'Pokemon Solid', 'Pixelify Sans', sans-serif;
+  --font-logo-outline: 'Pokemon Hollow', 'Pixelify Sans', sans-serif;
+  --font-body: 'Pixelify Sans', ui-monospace, monospace;
+
+  color-scheme: light;
+}
+
+/* ===== Modo noturno: troca superfícies e texto; o contorno continua escuro ===== */
+:root[data-theme='dark'] {
+  --ink: #0a0912;
+  --text: #efe9ff;
+  --paper: #262440;
+  --paper-2: #2f2d4f;
+  --paper-3: #423f68;
+  --surface: #38365e;
+  --surface-page: #15142a;
+  --muted: #aba4cf;
+  --pewter-light: #15142a;
+  --pewter-dark: #6e6890;
+  --saffron-light: #6b5a22;
+  --tab-bg: #4a4470;
+
+  color-scheme: dark;
+}
+
+/* ===== Base ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--pewter-light);
+  color: var(--text);
+  transition: background-color 0.3s steps(3);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+img,
+svg image {
+  image-rendering: pixelated;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px dashed var(--saffron);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.pixel-icon {
+  flex-shrink: 0;
+  display: block;
+}
+
+/* ===== Botão pixelado (pílula com contorno em degraus) ===== */
+.px-btn {
+  --btn-bg: var(--surface);
+  --btn-ink: var(--text);
+  --btn-shade: rgba(0, 0, 0, 0.18);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  margin: var(--px);
+  border: 0;
+  background: var(--btn-bg);
+  color: var(--btn-ink);
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow:
+    0 calc(-1 * var(--px)) 0 0 var(--ink),
+    0 var(--px) 0 0 var(--ink),
+    calc(-1 * var(--px)) 0 0 0 var(--ink),
+    var(--px) 0 0 0 var(--ink),
+    inset 0 calc(-1 * var(--px)) 0 0 var(--btn-shade);
+  transition: transform 0.1s steps(2);
+}
+
+.px-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.px-btn:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow:
+    0 calc(-1 * var(--px)) 0 0 var(--ink),
+    0 var(--px) 0 0 var(--ink),
+    calc(-1 * var(--px)) 0 0 0 var(--ink),
+    var(--px) 0 0 0 var(--ink),
+    inset 0 var(--px) 0 0 var(--btn-shade);
+}
+
+.px-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.px-btn--saffron {
+  --btn-bg: var(--saffron);
+  --btn-ink: var(--ink);
+}
+
+.px-btn--vermillion {
+  --btn-bg: var(--vermillion);
+  --btn-ink: var(--white);
+}
+
+.px-btn--cerulean {
+  --btn-bg: var(--cerulean);
+  --btn-ink: var(--white);
+}
+
+.px-btn--viridian {
+  --btn-bg: var(--viridian);
+  --btn-ink: var(--white);
+}
+
+.px-btn--small {
+  padding: 4px 10px;
+  font-size: 15px;
+}
+
+.px-btn--icon {
+  padding: 6px;
+}
+
+.blink {
+  animation: blink 1s steps(2) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes bob {
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition: none !important;
+  }
+}

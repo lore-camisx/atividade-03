@@ -1,0 +1,132 @@
+.poke-rows {
+  display: grid;
+  gap: 8px;
+  padding: 3px;
+  margin: 0;
+  list-style: none;
+}
+
+.poke-row {
+  display: grid;
+  grid-template-columns: 56px minmax(110px, 0.8fr) 1.6fr;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 6px 10px 6px 4px;
+  border: 0;
+  background: var(--paper-2);
+  text-align: left;
+  box-shadow:
+    0 0 0 3px var(--paper-3),
+    inset 6px 0 0 0 var(--row-type);
+  transition: transform 0.1s steps(2);
+}
+
+button.poke-row:hover {
+  transform: translateX(3px);
+  background: var(--surface);
+}
+
+.poke-row--selected {
+  background: var(--saffron-light);
+  box-shadow:
+    0 0 0 3px var(--ink),
+    inset 6px 0 0 0 var(--row-type);
+}
+
+.poke-row__sprite {
+  display: grid;
+  place-items: center;
+}
+
+.poke-row__head {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.poke-row__id {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.poke-row__id .pixel-icon {
+  color: var(--saffron-dark);
+}
+
+.poke-row__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+.poke-row__types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.poke-row__types .type-badge {
+  padding: 0 5px 1px;
+  font-size: 11px;
+}
+
+/* Seis atributos em grade 3x2 com mini-barras */
+.poke-row__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3px 10px;
+  font-size: 12px;
+}
+
+.poke-row__stat {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  gap: 4px;
+}
+
+.poke-row__stat-label {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.poke-row__stat-value {
+  min-width: 22px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.poke-row__stat-bar {
+  height: 5px;
+  background: var(--paper-3);
+  box-shadow: 0 0 0 1px var(--ink);
+}
+
+.poke-row__stat-bar span {
+  display: block;
+  height: 100%;
+  background: var(--row-type);
+}
+
+.poke-row__total {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-weight: 700;
+  text-align: right;
+}
+
+@media (max-width: 520px) {
+  .poke-row {
+    grid-template-columns: 52px 1fr;
+  }
+
+  .poke-row__stats {
+    grid-column: 1 / -1;
+  }
+}

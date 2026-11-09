@@ -1,0 +1,17 @@
+.type-badge {
+  display: inline-block;
+  padding: 1px 8px 2px;
+  margin: 2px;
+  background: var(--type-bg);
+  color: var(--type-ink);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow:
+    0 -2px 0 0 var(--ink),
+    0 2px 0 0 var(--ink),
+    -2px 0 0 0 var(--ink),
+    2px 0 0 0 var(--ink),
+    inset 0 -2px 0 0 rgba(0, 0, 0, 0.2);
+}

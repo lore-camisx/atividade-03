@@ -1,0 +1,175 @@
+.dex-page {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.dex-page__views {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.dex-page__view {
+  display: grid;
+  justify-items: center;
+  margin: 0;
+  padding: 8px 4px 6px;
+  background:
+    linear-gradient(transparent 70%, color-mix(in srgb, var(--dex-type) 35%, transparent) 70%),
+    var(--paper-2);
+}
+
+.dex-page__view .sprite {
+  width: 100% !important;
+  max-width: 96px;
+  height: auto !important;
+  aspect-ratio: 1;
+}
+
+.dex-page__view figcaption {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.dex-page__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.dex-page__id {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.dex-page__head .logo {
+  display: grid;
+  margin: 2px 0 6px;
+  font-size: clamp(26px, 3vw, 36px);
+}
+
+.dex-page__types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.dex-page__head-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.dex-page__habitat {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: var(--viridian);
+  color: var(--white);
+  box-shadow: 0 0 0 3px var(--ink);
+}
+
+.dex-page__habitat:hover {
+  background: var(--viridian-dark);
+}
+
+.dex-page__fav {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: var(--surface);
+  color: var(--pewter-dark);
+  box-shadow: 0 0 0 3px var(--ink);
+}
+
+.dex-page__fav.is-on {
+  background: var(--saffron);
+  color: var(--ink);
+}
+
+.dex-page__entry {
+  min-height: 92px;
+}
+
+.dex-page__entry p {
+  margin: 0 0 6px;
+}
+
+.dex-page__genus {
+  color: var(--vermillion);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+
+.dex-page__measures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: var(--muted);
+}
+
+.dex-page__offline {
+  width: 100%;
+}
+
+.dex-page__offline .retro-window__body {
+  padding: 12px;
+}
+
+/* Antena piscando "sem sinal" */
+.dex-page__antenna {
+  display: flex;
+  justify-content: center;
+}
+
+.dex-page__antenna span {
+  width: 4px;
+  height: 20px;
+  background: var(--ink);
+  box-shadow: -8px -8px 0 -1px var(--vermillion), 8px -8px 0 -1px var(--vermillion);
+  animation: blink 0.8s steps(2) infinite;
+}
+
+.dex-page__stats {
+  display: grid;
+  gap: 10px;
+}
+
+.dex-page__total {
+  display: flex;
+  justify-content: space-between;
+  margin: 4px 0 0;
+  padding-top: 8px;
+  border-top: 3px dotted var(--paper-3);
+  font-weight: 700;
+}
+
+.dex-page__bar {
+  margin-top: auto;
+}
+
+.dex-page__nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  background: var(--surface);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 0 0 2px var(--ink);
+}
+
+.dex-page__nav:hover {
+  background: var(--saffron-light);
+}
+
+.dex-page__owners {
+  flex: 1;
+  text-align: center;
+}

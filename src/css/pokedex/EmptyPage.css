@@ -1,0 +1,42 @@
+.empty-page {
+  display: grid;
+  place-items: center;
+  flex: 1;
+  padding: 12px 0;
+}
+
+.empty-page__grass {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.empty-page__grass span {
+  width: 32px;
+  height: 32px;
+  background:
+    linear-gradient(#2f8f4a, #2f8f4a) 0 16px / 8px 16px no-repeat,
+    linear-gradient(#6cc24a, #6cc24a) 8px 0 / 8px 32px no-repeat,
+    linear-gradient(#2f8f4a, #2f8f4a) 16px 8px / 8px 24px no-repeat,
+    linear-gradient(#6cc24a, #6cc24a) 24px 16px / 8px 16px no-repeat;
+  animation: rustle 0.6s steps(1) infinite;
+}
+
+.empty-page__grass span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.empty-page__grass span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes rustle {
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+.empty-page__text {
+  margin: 0 0 14px;
+}

@@ -1,0 +1,202 @@
+.compare {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+/* Arena: céu em faixas e plataformas ovais pixeladas */
+.compare__arena {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  align-items: end;
+  min-height: 230px;
+  background:
+    linear-gradient(#bfe9fb 0 40%, #d9f2fc 40% 62%, #c9e8a8 62%);
+}
+
+.compare__mon {
+  position: relative;
+  display: grid;
+  justify-items: center;
+}
+
+.compare__mon::before {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  width: 120px;
+  height: 22px;
+  background: color-mix(in srgb, var(--plat) 55%, #6cc24a);
+  clip-path: polygon(12% 0, 88% 0, 88% 25%, 100% 25%, 100% 75%, 88% 75%, 88% 100%, 12% 100%, 12% 75%, 0 75%, 0 25%, 12% 25%);
+}
+
+.compare__mon .sprite {
+  position: relative;
+}
+
+.compare__mon--b {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.compare__mon--a {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.compare__hud {
+  display: grid;
+  gap: 2px;
+  align-self: center;
+  padding: 6px 10px;
+  background: var(--surface);
+  font-size: 15px;
+  box-shadow: 0 0 0 3px var(--ink);
+}
+
+.compare__hud--b {
+  grid-column: 1;
+  grid-row: 1;
+  margin-right: 16px;
+}
+
+.compare__hud--a {
+  grid-column: 2;
+  grid-row: 2;
+  margin-left: 16px;
+}
+
+.compare__hud span:not(.compare__hp):not(.compare__hp span) {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.compare__hp {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--vermillion);
+}
+
+.compare__hp-track {
+  flex: 1;
+  height: 8px;
+  background: var(--paper-3);
+  box-shadow: 0 0 0 2px var(--ink);
+}
+
+.compare__hp-track span {
+  display: block;
+  height: 100%;
+  background: var(--viridian);
+  animation: stat-fill 0.8s steps(8) both;
+}
+
+.compare__result {
+  text-align: center;
+  font-size: 20px;
+}
+
+.compare__result p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 0;
+}
+
+.compare__result .pixel-icon {
+  color: var(--saffron-dark);
+}
+
+.compare__table {
+  display: grid;
+  gap: 8px;
+}
+
+.compare__row {
+  display: grid;
+  grid-template-columns: 1fr 76px 1fr;
+  align-items: center;
+  gap: 8px;
+}
+
+.compare__types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.compare__types--right {
+  justify-content: flex-end;
+}
+
+.compare__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.compare__bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.compare__bar--reverse {
+  flex-direction: row-reverse;
+}
+
+.compare__value {
+  width: 32px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.compare__bar.is-win .compare__value,
+.compare__row--total .is-win {
+  color: var(--viridian);
+}
+
+.compare__track {
+  display: flex;
+  flex: 1;
+  height: 12px;
+  background: var(--paper-3);
+  box-shadow: 0 0 0 2px var(--ink);
+}
+
+.compare__bar--reverse .compare__track {
+  justify-content: flex-end;
+}
+
+.compare__fill {
+  display: block;
+  height: 100%;
+  background: var(--fill);
+  animation: stat-fill 0.6s steps(8) both;
+}
+
+.compare__row--total {
+  padding-top: 8px;
+  border-top: 3px dotted var(--paper-3);
+  font-size: 20px;
+}
+
+.compare__row--total strong:first-child {
+  text-align: right;
+}
+
+:root[data-theme='dark'] .compare__arena {
+  background:
+    radial-gradient(#fffaf0 1px, transparent 1.5px) 0 0 / 28px 20px,
+    linear-gradient(#0f2350 0 40%, #183b76 40% 62%, #1f5a4a 62%);
+}

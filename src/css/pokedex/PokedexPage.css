@@ -1,0 +1,79 @@
+.pokedex-page {
+  min-height: 100vh;
+  padding: 16px 16px 48px;
+  background:
+    linear-gradient(45deg, rgba(0, 0, 0, 0.06) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.06) 75%) 0 0 / 32px 32px,
+    linear-gradient(45deg, rgba(0, 0, 0, 0.06) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.06) 75%) 16px 16px / 32px 32px,
+    var(--cerulean);
+}
+
+.pokedex-page__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 1180px;
+  margin: 0 auto 12px;
+}
+
+/* Elementos compartilhados pelas páginas do livro */
+.box {
+  position: relative;
+  padding: 12px;
+  background: var(--paper-2);
+  box-shadow:
+    0 -3px 0 0 var(--paper-3),
+    0 3px 0 0 var(--paper-3),
+    -3px 0 0 0 var(--paper-3),
+    3px 0 0 0 var(--paper-3);
+  outline: 2px dashed rgba(110, 98, 83, 0.35);
+  outline-offset: -7px;
+}
+
+.book-heading {
+  margin: 0;
+  font-family: var(--font-logo);
+  font-size: 28px;
+  font-weight: normal;
+  color: var(--vermillion);
+  letter-spacing: 1px;
+}
+
+.book-footnote {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  text-align: center;
+}
+
+.trainers-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.dex-page__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 10px;
+  background: var(--paper-3);
+  font-size: 15px;
+}
+
+:root[data-theme='dark'] .pokedex-page {
+  background:
+    linear-gradient(45deg, rgba(0, 170, 238, 0.07) 25%, transparent 25%, transparent 75%, rgba(0, 170, 238, 0.07) 75%) 0 0 / 32px 32px,
+    linear-gradient(45deg, rgba(0, 170, 238, 0.07) 25%, transparent 25%, transparent 75%, rgba(0, 170, 238, 0.07) 75%) 16px 16px / 32px 32px,
+    var(--cerulean-deep);
+}
+
+:root[data-theme='dark'] .box {
+  outline-color: rgba(171, 164, 207, 0.25);
+}

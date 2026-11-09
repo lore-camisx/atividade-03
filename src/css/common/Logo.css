@@ -1,0 +1,48 @@
+/* Três camadas sobrepostas na mesma célula do grid */
+.logo {
+  display: inline-grid;
+  margin: 0;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: 2px;
+  user-select: none;
+}
+
+.logo__layer {
+  position: relative;
+  grid-area: 1 / 1;
+  white-space: nowrap;
+}
+
+.logo__shadow {
+  font-family: var(--font-logo);
+  color: var(--cerulean-deep);
+  -webkit-text-stroke: 0.14em var(--cerulean-deep);
+  transform: translateY(0.05em);
+  filter: drop-shadow(0 0.05em 0 var(--ink));
+  z-index: 0;
+}
+
+.logo__fill {
+  z-index: 1;
+  font-family: var(--font-logo);
+  color: var(--saffron);
+}
+
+.logo__outline {
+  z-index: 2;
+  font-family: var(--font-logo-outline);
+  color: var(--cerulean-dark);
+}
+
+.logo--large {
+  font-size: clamp(56px, 12vw, 132px);
+}
+
+.logo--medium {
+  font-size: clamp(32px, 5vw, 48px);
+}
+
+.logo--small {
+  font-size: 28px;
+}

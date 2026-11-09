@@ -1,0 +1,29 @@
+.sprite {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.sprite img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  user-select: none;
+}
+
+.sprite__missing {
+  font-family: var(--font-logo);
+  font-size: 28px;
+  color: var(--pewter-dark);
+}
+
+.sprite--bob {
+  animation: sprite-bob 0.9s steps(1) infinite;
+}
+
+@keyframes sprite-bob {
+  50% {
+    transform: translateY(-4px);
+  }
+}
